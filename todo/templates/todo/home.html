@@ -1,0 +1,48 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div class="content-section">
+                <h3>Folders</h3>
+                <p class='text-muted '>Select your folder</p>
+                <div class="list-group ">
+                    {% for folder in folders %}
+                        <a href="{% url 'todo:folder' folder.id %}"
+                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center {% if folder == current_folder %}active{% endif %}">
+                            {{ folder.name }}
+                            <span class="badge badge-primary badge-pill">{{ folder.no_of_entries }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            {% for entry in current_folder.entry_set.all %}
+            <div class="card mx-5 mb-4">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-1 form-check">
+                                <input class="form-check-input position-static" style="width: 20px; height: 20px;" type="checkbox"
+                                    {% if entry.completed %} checked="checked" {% endif %} disabled>
+                            </div>
+                            <div class="col pl-0">
+                                <h4 class="card-title"><a href="{% url 'todo:update_entry' entry.id %}">{% if entry.completed %} <del> {% endif %}
+                                    {{ entry.name }}
+                                {% if entry.completed %} </del> {% endif %}</a></h4>
+                                <p class="card-text">{{ entry.description }}</p>
+                                <small class="card-text float-left">Priority: {{ entry.priority }}</small>
+                                <small class="card-text float-right">Due: {{ entry.due_date|date:"d M, Y - g:i A" }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
