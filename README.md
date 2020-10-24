@@ -2,8 +2,9 @@
 
 #### A To Do List website written in Django.
 
-<br>
+You can access a live version of this project here: https://django-todo-list-web-app.herokuapp.com/
 
+## Features
 * The website has user authentication, so each person's lists stay private.
 * Each To-Do entry has a title, description, due date, priority, and a completed flag.
 * Everything can be categorized into separate folders.
@@ -31,14 +32,14 @@ docker-compose up
 * Finally, open [localhost:8000](http://localhost:8000) in your browser and you will be able to access the website.
 
 ## Results
-#### Users are first greeted with a registration page, then prompted to login
+### Users are first greeted with a registration page, then prompted to login.
 
 ![registration page](media/register_page.png)
 
-#### On the home page, users are presented with their list of folders, and the entire contents of each.
+### On the home page, users are presented with their list of folders, and all the items within them.
 
 ![home page](media/home_page.png)
 
-#### Each of the Entries can be edited and updated as required.
+### Each of the Entries can be edited and updated as required.
 
 ![update page](media/update_page.png)
