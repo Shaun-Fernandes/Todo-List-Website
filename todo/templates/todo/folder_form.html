@@ -8,13 +8,13 @@
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
-                        <legend class="border-bottom mb-4">To Do List Entry</legend>
+                        <legend class="border-bottom mb-4">Folder</legend>
                         {{ form|crispy }}
                     </fieldset>
                     <div class="form-group">
                         <button type="submit" class="btn btn-outline-info px-4">Save</button>
-                    {% if entry_id %}
-                        <a class="btn btn-outline-danger ml-1" href="{% url 'todo:delete_entry' entry_id %}" role="button">Delete</a>
+                    {% if object %}
+                        <a class="btn btn-outline-danger ml-1" href="{% url 'todo:delete_folder' object.id %}" role="button">Delete</a>
                     {% endif %}
                     </div>
                 </form>

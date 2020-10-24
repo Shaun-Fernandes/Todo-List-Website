@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 PRIORITY_CHOICES = [
@@ -16,6 +17,9 @@ class Folder(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('todo:folder', kwargs={'folder_id':self.pk})
 
     def no_of_entries(self):
         return self.entry_set.count()
