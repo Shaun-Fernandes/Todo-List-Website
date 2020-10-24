@@ -37,7 +37,7 @@ def new_entry(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Your new To Do entry has been saved")
-            return redirect('todo:home')
+            return redirect('todo:folder', folder_id = form.cleaned_data['folder'].id)
     else:
         form = EntryCreationForm(request.user)
 
